@@ -1,15 +1,24 @@
 import Hero from '@/Components/Hero';
-import WorkoutCard from '@/Components//WorkoutCard';
+import WorkoutCard from '@/Components/WorkoutCard';
 import type { Workout } from '@/types';
 
 async function getWorkouts(): Promise<Workout[]> {
-  const res = await fetch('https://api.abcz.workers.dev/api/fitlog', {
-    next: { revalidate: 60 },
-  });
+  try {
+    const res = await fetch(
+      'https://api.abcz.workers.dev/api/fitlog',
+      {
+        next: { revalidate: 60 },
+      }
+    );
 
-  if (!res.ok) throw new Error('Failed to fetch workouts');
+    if (!res.ok) {
+      return [];
+    }
 
-  return res.json();
+    return await res.json();
+  } catch {
+    return [];
+  }
 }
 
 export default async function Home() {
@@ -39,6 +48,7 @@ export default async function Home() {
 
             <div className="flex h-fit items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-4 py-2">
               <span className="h-2 w-2 rounded-full bg-[#ccff00] shadow-[0_0_10px_rgba(204,255,0,0.7)]" />
+
               <span className="text-xs font-semibold uppercase tracking-wider text-gray-400">
                 {workouts.length} Workouts
               </span>
@@ -47,7 +57,10 @@ export default async function Home() {
 
           <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 md:gap-6 lg:grid-cols-3">
             {workouts.map((workout) => (
-              <WorkoutCard key={workout.id} workout={workout} />
+              <WorkoutCard
+                key={workout.id}
+                workout={workout}
+              />
             ))}
           </div>
         </div>
