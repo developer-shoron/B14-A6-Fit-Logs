@@ -1,5 +1,5 @@
-import Footer from '@/components/Footer';
-import Navbar from '@/components/Navbar';
+import Footer from '@/Components/Footer';
+import Navbar from '@/Components/Navbar';
 import { PlanProvider } from '@/context/PlanContext';
 import type { Metadata, Viewport } from 'next';
 import { Inter, Oswald } from 'next/font/google';
