@@ -8,7 +8,8 @@ FitLog allows users to browse workouts, view detailed exercise information, add 
 
 ## 🔗 Project Links
 
-* **Live Demo:** `Add your deployed live link here`
+
+* **Live Demo:** `https://b14-a6-fit-logs.vercel.app/`
 * **GitHub Repository:** `https://github.com/developer-shoron/B14-A6-Fit-Log`
 
 ---
