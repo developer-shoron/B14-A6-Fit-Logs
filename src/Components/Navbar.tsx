@@ -1,6 +1,6 @@
 'use client';
 
-import { usePlan } from '@/context/PlanContext';
+import { usePlan } from '@/context/PlanContext'
 import { Zap } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
