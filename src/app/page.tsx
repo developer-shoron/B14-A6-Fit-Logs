@@ -4,19 +4,13 @@ import type { Workout } from '@/types';
 
 async function getWorkouts(): Promise<Workout[]> {
   try {
-    const res = await fetch(
-      'https://api.abcz.workers.dev/api/fitlog',
-      {
-        next: { revalidate: 60 },
-      }
-    );
-
-    if (!res.ok) {
-      return [];
-    }
-
-    return await res.json();
-  } catch {
+    const res = await fetch('https://api.api-store.workers.dev/api/fitlog', {
+      cache: 'no-store',
+    });
+    if (!res.ok) return [];
+    return res.json();
+  } catch (error) {
+    console.error('Failed to fetch workouts:', error);
     return [];
   }
 }
@@ -48,7 +42,6 @@ export default async function Home() {
 
             <div className="flex h-fit items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-4 py-2">
               <span className="h-2 w-2 rounded-full bg-[#ccff00] shadow-[0_0_10px_rgba(204,255,0,0.7)]" />
-
               <span className="text-xs font-semibold uppercase tracking-wider text-gray-400">
                 {workouts.length} Workouts
               </span>
@@ -57,10 +50,7 @@ export default async function Home() {
 
           <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 md:gap-6 lg:grid-cols-3">
             {workouts.map((workout) => (
-              <WorkoutCard
-                key={workout.id}
-                workout={workout}
-              />
+              <WorkoutCard key={workout.id} workout={workout} />
             ))}
           </div>
         </div>
