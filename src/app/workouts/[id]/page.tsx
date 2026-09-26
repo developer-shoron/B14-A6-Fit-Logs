@@ -1,4 +1,4 @@
-import ActionButtons from '@/components/ActionButtons';
+import ActionButtons from '@/Components/ActionButton';
 import type { Workout } from '@/types';
 import { ArrowLeft } from 'lucide-react';
 import Image from 'next/image';

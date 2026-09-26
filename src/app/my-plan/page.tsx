@@ -1,6 +1,6 @@
 'use client';
 
-import SearchBar from '@/components/SearchBar';
+import SearchBar from '@/Components/SearchBar';
 import { usePlan } from '@/context/PlanContext';
 import type { Workout } from '@/types';
 import { ArrowRight, Check, Clock, Flame, Star, X } from 'lucide-react';

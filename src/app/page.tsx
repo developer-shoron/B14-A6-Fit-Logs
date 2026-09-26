@@ -1,5 +1,5 @@
-import Hero from '@/components/Hero';
-import WorkoutCard from '@/components/WorkoutCard';
+import Hero from '@/Components/Hero';
+import WorkoutCard from '@/Components//WorkoutCard';
 import type { Workout } from '@/types';
 
 async function getWorkouts(): Promise<Workout[]> {
